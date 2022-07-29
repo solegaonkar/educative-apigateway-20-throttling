@@ -63,9 +63,6 @@ echo "API ID: $apiId"
 # -----------------------------------------------------------------
 aws apigateway create-deployment --rest-api-id $apiId --stage-name v1 --description 'Deployed from CLI' 
 
-aws apigateway update-stage --rest-api-id $apiId --stage-name v1 --patch-operations op=replace,path=/*/*/throttling/burstLimit,value=1
-aws apigateway update-stage --rest-api-id $apiId --stage-name v1 --patch-operations op=replace,path=/*/*/throttling/rateLimit,value=1
-
 # -----------------------------------------------------------------
 # Give it some time to settle down
 # -----------------------------------------------------------------
@@ -80,27 +77,5 @@ echo $url
 # -----------------------------------------------------------------
 # Invoke the URL to test the response
 # -----------------------------------------------------------------
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
-
+curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }'
 
