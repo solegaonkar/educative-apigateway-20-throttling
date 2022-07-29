@@ -1,9 +1,10 @@
 /**
- * This code is deployed as the Lambda function in AWS.
- * It just returns the simple string Hello World.
+ * This function returns a promise that can resolve after n seconds.
+ *
+ * @param {*} n
+ * @returns
  */
-
-const sleep = async (n) => {
+const sleep = (n) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(n);
@@ -11,6 +12,13 @@ const sleep = async (n) => {
   });
 };
 
+/**
+ * The Lambda function echoes the input as is, after two seconds.
+ *
+ * @param {*} event
+ * @param {*} context
+ * @returns
+ */
 exports.handler = async (event, context) => {
   await sleep(2);
   return event;
