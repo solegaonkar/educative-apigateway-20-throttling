@@ -82,3 +82,8 @@ echo $url
 # Invoke the URL to test the response
 # -----------------------------------------------------------------
 curl --location --request POST $url --header 'Content-Type: application/json' --data-raw '{ "message": "Hello World" }' &
+
+# -----------------------------------------------------------------
+# Now run the burst.sh to check how the API can handle a burst
+# -----------------------------------------------------------------
+./burst.sh
