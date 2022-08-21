@@ -22,9 +22,9 @@ Resources:
       MemorySize: 128
   RestAPI:
     Type: AWS::ApiGateway::RestApi
-    Properties: 
-      EndpointConfiguration: 
-        Types: 
+    Properties:
+      EndpointConfiguration:
+        Types:
           - REGIONAL
       Body:
         openapi: "3.0.1"
@@ -92,4 +92,12 @@ Resources:
                 Action:
                   - lambda:InvokeFunction
                 Resource: !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:EducativeHelloWorld"
-
+  APIDeployment:
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId:
+        Ref: RestAPI
+      StageName: v1
+      StageDescription:
+        ThrottlingBurstLimit: 1
+        ThrottlingRateLimit: 1

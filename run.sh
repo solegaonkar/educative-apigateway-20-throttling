@@ -55,22 +55,8 @@ aws cloudformation deploy \
 # -----------------------------------------------------------------
 # Get the API ID of the Rest API we just created.
 # -----------------------------------------------------------------
-apiId=`aws cloudformation list-stack-resources --stack-name EducativeCourseApiGateway | jq -r ".StackResourceSummaries[2].PhysicalResourceId"`
+apiId=`aws cloudformation list-stack-resources --stack-name EducativeCourseApiGateway | jq -r ".StackResourceSummaries[3].PhysicalResourceId"`
 echo "API ID: $apiId"
-
-# -----------------------------------------------------------------
-# Deploy the API to a new Stage (We will discuss this in detail in a later chapter)
-# -----------------------------------------------------------------
-aws apigateway create-deployment --rest-api-id $apiId --stage-name v1 --description 'Deployed from CLI' 
-sleep 1
-aws apigateway update-stage --rest-api-id $apiId --stage-name v1 --patch-operations op=replace,path=/*/*/throttling/burstLimit,value=1
-sleep 1
-aws apigateway update-stage --rest-api-id $apiId --stage-name v1 --patch-operations op=replace,path=/*/*/throttling/rateLimit,value=1
-
-# -----------------------------------------------------------------
-# Give it some time to settle down
-# -----------------------------------------------------------------
-sleep 30
 
 # -----------------------------------------------------------------
 # This is the URL for the API we just created
